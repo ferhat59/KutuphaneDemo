@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Özgür Kütüphane</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+   
+</head>
+<body>
+<div class="container">
+   <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div> 
+        <h2>Kitap Listesi</h2>
+        <span th:text="${error?.error}" style="color: red"></span>
+        <table class="table table-striped">
+            <tr>
+                <th>Yazar</th>
+                <th>Kitap</th>
+                <th>Alt Ýsmi</th>
+                <th>Seri No</th>
+                <th>ISBN</th>
+                <th>Açýklama</th>
+              
+            </tr>
+            <th:block th:each="book : ${books}">
+            
+                    <td th:text="${author}"></td>
+                   	<td th:text="${book.bookName}"></td> 	
+                    <td th:text="${book.subname}"></td>
+                    <td th:text="${book.seriname}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td th:text="${book.description}"></td>  
+                                                 
+                
+                </th:block>      
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

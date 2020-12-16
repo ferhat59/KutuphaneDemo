@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Özgür Kütüphane</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Kitap Kayıt</h2>
+    <div>
+        <form class="form-horizontal" method="get" action="/save-book">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >Kitap İsmi</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="bookName"/>
+                </div>
+            </div>
+            <span th:text="${error?.bookexcep}" style="color: red"></span>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Açıklama</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="description"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >Alt İsim</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="subname"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >Seri No</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="seriname"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >ISBN</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="isbn"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Yazar</label>
+                <div class="col-sm-10">
+                    <select name="authorName" class="form-control" >
+                    
+                   
+                        <option th:each = " author : ${authors}" th:value="${author.authorName}" th:text="${author.authorName}"/>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label class="col-sm-2 control-label">Yayın Evi</label>
+                <div class="col-sm-10">
+                    <select name="publisherName" class="form-control">
+                    
+                        <option th:each = " publisher : ${publishers}" th:value="${publisher.publisherName}" th:text="${publisher.publisherName}"/>
+                    </select>
+                </div>
+                <span th:text="${error?.error}" style="color: red"></span>
+            </div>
+            <div>
+                <script> </script>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

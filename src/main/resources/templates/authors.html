@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Özgür Kütüphane</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+   
+</head>
+<body>
+<div class="container">
+   <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div> 
+        <h2>Kitap Listesi</h2>
+        <span th:text="${error?.error}" style="color: red"></span>
+        <table class="table table-striped">
+            <tr>
+                <th>Yazar</th>
+                <th>Kitap</th>
+                <th>Yayın Evi</th>
+                <th>Alt İsmi</th>
+                <th>Seri No</th>
+                <th>ISBN</th>
+                <th>Açıklama</th>
+                <th>Kitabı Sil</th>
+                <th>Kitabı Düzenle</th>
+            </tr>
+            <th:block th:each="bookDto : ${bookDtos}">
+                <tr th:each="author : ${bookDto.authorDto}">
+                    <td th:text="${author.authorName}"></td>
+                    <td th:text="${bookDto.bookName}"></td>
+                    <td th:text="${bookDto.publisherName}"></td>
+                    <td th:text="${bookDto.subname}"></td>
+                    <td th:text="${bookDto.seriname}"></td>
+                    <td th:text="${bookDto.isbn}"></td>
+                    <td th:text="${bookDto.description}"></td>  
+                    <td><a th:href="${'/book/delete/'+ bookDto.id}">Sil</a></td>   
+                    <td><a th:href="${'/book/edit/' + bookDto.id}">Düzenle</a></td>
+                    
+                    
+                </tr>
+            </th:block>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

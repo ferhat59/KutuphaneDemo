@@ -3,7 +3,8 @@
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-	<title>Yetkisiz Eriþim</title>
+	<title>Yetkisiz EriÅŸim</title>
+	<meta charset="utf-8">
 	<!-- Reference Bootstrap files -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -41,7 +42,7 @@
 						   aria-pressed="true"/>
 				</form>
 			</li>
-			<li class="navbar-text">Kullanýcý:
+			<li class="navbar-text">KullanÄ±cÄ±:
 				<span sec:authentication="principal.username"></span>
 				, Rol:
 				<span sec:authentication="principal.authorities"></span></li>
@@ -49,6 +50,6 @@
 	</div>
 </nav>-->
 <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-	<h2>Yetkisiz Eriþim!!!</h2>
+	<h2>Yetkisiz EriÅŸim!!!</h2>
 </body>
 </html>

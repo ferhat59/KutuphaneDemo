@@ -52,7 +52,7 @@ public class BookServiceImpl implements BookService {
         
         Publisher publisher = publisherService.findByName(publishName);
         if (publisher == null){
-            throw new Exception("Yayın Evi Seç");
+            throw new Exception("выберите издателя");
         }
         book.setPublisher(publisher);
         Book entity = bookRepo.save(book);
@@ -110,7 +110,50 @@ public class BookServiceImpl implements BookService {
         return bookDto;
     }
 
+  /*  @Override
+    public List<BookDto> getTestAllBook(String bookName, String authorName) {
+        List<BookDto> bookDtos = new ArrayList<>();
+        List<Book> bookList = null;
+        if ("All".equals(bookName)){
+            bookList = bookRepo.findAll();
+        } else {
+            Book book = bookRepo.findByBookName(bookName);
+            bookList = new ArrayList<>();
+            bookList.add(book);
+        }
+        for (Book book : bookList){
+            BookDto bookDto = new BookDto();
+            bookDto.setId(book.getId());
+            bookDto.setBookName(book.getBookName());
+            bookDto.setDescription(book.getDescription());
+            bookDto.setSeriname(book.getSeriname());
+            bookDto.setSubname(book.getSubname());
+            bookDto.setIsbn(book.getIsbn());
+            Publisher publisher = book.getPublisher();
+            bookDto.setPublisherName(publisher.getPublisherName());
+            List<Author> authorList = book.getAuthors();
+            List<AuthorDto> authorDto2s = new ArrayList<>();
+            for (Author author : authorList){
+                AuthorDto authorDto2 = new AuthorDto();
+                if ("All".equals(authorName)){
+                    authorDto2.setId(author.getId());
+                    authorDto2.setAuthorName(author.getAuthorName());
+                    authorDto2s.add(authorDto2);
+                } else {
+                    if (authorName.equals(author.getAuthorName())){
+                        authorDto2.setId(author.getId());
+                        authorDto2.setAuthorName(author.getAuthorName());
+                        authorDto2s.add(authorDto2);
+                    }
+                }
 
+            }
+            bookDto.setAuthorDto(authorDto2s);
+            bookDtos.add(bookDto);
+        }
+        return bookDtos;
+    }
+*/
     @Override
     public List<BookDto> getAll() {
         List<Book> bookList = bookRepo.findAll();

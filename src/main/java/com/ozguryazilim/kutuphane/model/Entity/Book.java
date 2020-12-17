@@ -35,9 +35,9 @@ public class Book {
     private String isbn;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "publisher_id")
-    private Publisher publisher;
-
+    @JoinColumn(name = "publisher_id") 
+    private Publisher publisher; 
+    
     @ManyToMany(cascade = CascadeType.DETACH)
     @JoinTable(name = "author_book",
         joinColumns = @JoinColumn(name ="book_id", referencedColumnName = "id"),

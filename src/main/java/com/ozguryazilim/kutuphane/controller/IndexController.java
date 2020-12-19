@@ -43,9 +43,9 @@ public class IndexController {
 		return "access_denied";
 		
 	}
-    @GetMapping("/authors")
+    @GetMapping("/books")
     public String getProduct(){
-        return "authors";
+        return "books";
     }
 
     @RequestMapping("/book/new")
@@ -65,6 +65,10 @@ public class IndexController {
     @GetMapping("/add-author")
     public String addAuthor(Model model){
         return "authorAdd";
+    }
+    @GetMapping("/get-authors")
+    public String authors(Model model){
+        return "authors";
     }
    
 

@@ -13,4 +13,6 @@ public interface AuthorService {
     Author saveAuthor(String publisherName,String description) throws Exception;
     AuthorDto findByIdAndBookName(Long id, String bookName);
     List<Book> getBook(String name);
+    List<Author> findAll();
+    void delete(Long id);
 }

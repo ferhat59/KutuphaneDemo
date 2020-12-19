@@ -68,7 +68,7 @@ public class MyController {
         model.addAttribute("bookDtos", bookDtos);
         model.addAttribute("aDtos", aDtos);
         
-        return "authors";
+        return "books";
     }
 
     @GetMapping("/ara/yazarisim")
@@ -177,15 +177,37 @@ System.out.println(seriName);
             
             Model model) {
         ExceptionDto errorDto = null;
-      
-        	bookService.edit(id, bookName, subname, seriname, isbn, description);
+      try {
+    	  bookService.edit(id, bookName, subname, seriname, isbn, description);
+      }
+        	catch (Exception e) {
+				errorDto = new ExceptionDto("Düzenleme yapılamadı");
+			}
             
         
         List<BookDto> bookDtos = bookService.getAllBook();
         model.addAttribute("bookDtos", bookDtos);
         model.addAttribute("error", errorDto);
+        return "books";
+    }
+    @GetMapping("/all-authors")
+    public String authors(Model model){
+    
+      
+    	model.addAttribute("authors", authorService.findAll());
         return "authors";
     }
-   
+    @GetMapping("/authors/delete/{authorId}")
+    public String deleteauthors(Model model, @PathVariable(value = "authorId") Long authorId){
+      System.out.println("silindi");
+      ExceptionDto dto=null;
+    	try {
+    		authorService.delete(authorId);
+    	}catch (Exception e) {
+			dto =new ExceptionDto("Yazara ait kitap olduğundan silinemiyor");
+		}
+    	model.addAttribute("error", dto);
+        return "authors";
+    }
     }
 

@@ -84,4 +84,16 @@ public class AuthorServiceImpl implements AuthorService {
 		
 		return yazilanlar.getBooks();
 	}
+
+	@Override
+	public List<Author> findAll() {
+		// TODO Auto-generated method stub
+		return authorRepo.findAll();
+	}
+
+	@Override
+	public void delete(Long id) {
+		authorRepo.deleteById(id);
+		
+	}
 }
